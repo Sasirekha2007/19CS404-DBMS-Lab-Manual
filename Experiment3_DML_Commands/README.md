@@ -47,123 +47,194 @@ SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
 --
--- Paste Question 1 here
+How many patients are covered by each insurance company?
 
+Sample table:Insurance Table
+
+name               type
+-----------------  ----------
+InsuranceID        INTEGER
+PatientID          INTEGER
+InsuranceCompany   TEXT
+PolicyNumber       TEXT
+PolicyHolder       TEXT
+ValidityPeriod     TEXT
 ```sql
--- Paste your SQL code below for Question 1
+select InsuranceCompany, count(PatientID)
+as TotalPatients from Insurance group by InsuranceCompany;
 ```
 
 **Output:**
+<img width="855" height="750" alt="image" src="https://github.com/user-attachments/assets/dd312383-d8a1-4086-aed3-ff1ccfc0c01b" />
 
-![Output1](output.png)
 
 **Question 2**
 ---
--- Paste Question 2 here
+How many appointments are scheduled for each patient?
+
+Sample table: Appointments Table
+
+name                  type
+--------------------  ----------
+AppointmentID         INTEGER
+PatientID             INTEGER
+DoctorID              INTEGER
+AppointmentDateTime   DATETIME
+Purpose               TEXT
+Status                TEXT
 
 ```sql
--- Paste your SQL code below for Question 2
+select PatientID, count(AppointmentID) as TotalAppointments from Appointments group by PatientID;
 ```
-
 **Output:**
 
-![Output2](output.png)
+<img width="855" height="722" alt="image" src="https://github.com/user-attachments/assets/a841a750-c541-4caa-bf55-57b9c0b9907d" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+<img width="908" height="257" alt="image" src="https://github.com/user-attachments/assets/8af1dd0d-6c0b-4f89-ab96-03b900c8069a" />
+
 
 ```sql
--- Paste your SQL code below for Question 3
+select PatientID, count(RecordID) as TotalRecords from MedicalRecords group by PatientID;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="870" height="752" alt="image" src="https://github.com/user-attachments/assets/e435556a-5bbe-4876-a77e-b6d56c1c85a3" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+<img width="891" height="501" alt="image" src="https://github.com/user-attachments/assets/37622463-f402-44b6-824a-7b96505debb4" />
+
 
 ```sql
--- Paste your SQL code below for Question 4
+select sum(workhour) as "Total working hours" from employee1;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="867" height="396" alt="image" src="https://github.com/user-attachments/assets/9ed029f7-d7b6-4d3d-88bc-4093a83d2dc0" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to  find the average salary of all employees?
+
+Table: employee
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
 
 ```sql
--- Paste your SQL code below for Question 5
+select avg(income) as "Average_Salary" from employee;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="877" height="385" alt="image" src="https://github.com/user-attachments/assets/3402d9a3-518d-4efc-a06c-01b09a507e2f" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to find the total number of unique cities in the customer table?
+
+Table: customer
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+city        TEXT
+email       TEXT
+phone       INTEGER
 
 ```sql
--- Paste your SQL code below for Question 6
+select count(distinct city) as unique_cities from customer;
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="873" height="416" alt="image" src="https://github.com/user-attachments/assets/5fda06b6-d2f5-4215-a09f-7dc91dd56ae9" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to calculate the average purchase amount of all orders. Return average purchase amount.
+
+Sample table: orders
+
+ord_no      purch_amt   ord_date    customer_id  salesman_id
+
+----------  ----------  ----------  -----------  -----------
+
+70001       150.5       2012-10-05  3005         5002
+
+70009       270.65      2012-09-10  3001         5005
+
+70002       65.26       2012-10-05  3002         5001
 
 ```sql
--- Paste your SQL code below for Question 7
+select avg(purch_amt) as AVERAGE from orders;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="872" height="405" alt="image" src="https://github.com/user-attachments/assets/f2bcc24a-3342-418c-b130-46d25dae683d" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write the SQL query that accomplishes the selection of total cost of all products in each category from the "products" table and includes only those products where the total cost is greater than 50.
 
 ```sql
--- Paste your SQL code below for Question 8
+select category_id, sum(price) as Total_Cost from products group by category_id having sum(price)>50;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="896" height="410" alt="image" src="https://github.com/user-attachments/assets/deec6ebb-b810-48e3-9270-3042a3fbca35" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write the SQL query that accomplishes the grouping of data by joining date (jdate), calculates the average work hours for each date, and excludes dates where the average work hour is not less than 10.
+
+Sample table: employee1
+
+
 
 ```sql
--- Paste your SQL code below for Question 9
+select jdate, AVG(workhour) from employee1 group by jdate having AVG(workhour)<10;
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="871" height="420" alt="image" src="https://github.com/user-attachments/assets/2e1d6c99-6bf2-41ce-8c64-57b69a4e094d" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write the SQL query that achieves the grouping of data by occupation, calculates the total work hours for each occupation, and excludes occupations where the total work hour sum is not greater than 20.
+
+Sample table: employee1
+
+
 
 ```sql
--- Paste your SQL code below for Question 10
+select occupation, SUM(workhour) from employee1 group by occupation having SUM(workhour)>20;
 ```
 
 **Output:**
+<img width="855" height="537" alt="image" src="https://github.com/user-attachments/assets/1ee46784-7cd1-444e-bf67-00834deb94c3" />
 
-![Output10](output.png)
 
 ## RESULT
 Thus, the SQL queries to implement DML commands have been executed successfully.

@@ -2,7 +2,7 @@
 
 ## Objective
 To understand and apply ER modeling concepts by creating ER diagrams for real-world applications.
-
+ 
 ## Purpose
 Gain hands-on experience in designing ER diagrams that represent database structure including entities, relationships, attributes, and constraints.
 
